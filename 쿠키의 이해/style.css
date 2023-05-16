@@ -1,0 +1,54 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+a {text-decoration: none;}
+
+
+.del {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: black;
+    font: bold 14px/1 '맑은 고딕';
+    color: #fff;
+    margin: 50px;
+    border-radius: 5px;
+}
+
+.view {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    font: bold 14px/1 '맑은 고딕';
+    color: #000;
+    margin: 50px;
+    border-radius: 5px;
+}
+
+#popup {
+    width: 500px;
+    padding: 40px;
+    background-color: beige;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+#popup .content {
+    width: 100%;
+    min-height: 150px;
+    font: 30px/1.2 'arial';
+    color: #000;
+}
+
+#popup .close {
+    position: absolute;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: 40px;
+    right: 40px;
+    background-color: rgb(161, 143, 121);
+    color: #fff;
+    font: 16px/1 'arial';
+}
