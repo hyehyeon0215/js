@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #efefef;
+
+    header {
+        width: 400px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: linear-gradient(45deg, aqua, royalblue);
+        transition: 1s;
+
+        h1 {
+            font: bold 50px/1 "orbitron";
+            color: #fff;
+            letter-spacing: 1px;
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-150%);
+
+            &::before {
+                content: "UI/UX development";
+                display: block;
+                font: 14px/1 'orbitron';
+                color: #fff;
+                letter-spacing: 1px;
+                // position: absolute;
+                // top: 45px;
+                // left: 0;
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                width: 150px;
+                height: 2px;
+                background-color: #fff;
+                margin-top: 20px;
+            }
+        }
+
+        ul {
+            position: absolute;
+            bottom: 100px;
+            left: 50px;
+
+            li {
+                float: left;
+                margin-right: 5px;
+
+                a {
+                    font-size: 20px;
+                    color: #fff;
+
+                    span {
+                        opacity: 0.7;
+                        font-size: 15px;
+                        // transform: scale(0.4);
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        margin-left: 400px;
+        padding: 20px;
+
+        ul {
+            float: right;
+            margin-bottom: 10px;
+
+            li {
+                float: left;
+                width: 100px;
+                height: 26px;
+                margin-left: 20px;
+
+                a{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    font: bold 7px/26px 'orbitron';
+                    color: #aaa;
+                    letter-spacing: 1px;
+                    text-align: center;
+                    background-color: #fff;
+                    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+                    border-radius: 4px;
+                }
+
+                &.on a{
+                    background: linear-gradient(45deg, aqua, royalblue);
+                    color: #fff;
+                }
+            }
+        }
+
+        section {
+            width: 100%;
+            float: left;
+
+            article {
+                width: 20%;
+                padding: 12px;
+                float: left;
+            
+                div{
+                    width: 100%;
+                    background-color: #fff;
+                    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+                    padding: 14px;
+                    border-radius: 4px;
+
+                    img {
+                        width: 100%;
+                        margin-bottom: 15px;
+                    }
+
+                    h2 {
+                        font: bold 11px/1 'arial';
+                        color: #444;
+                        letter-spacing: 1px;
+                        margin-bottom: 5px;
+                    }
+
+                    p {
+                        font: 10px/1.2 'arial';
+                        color: #777;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #efefef;
+}
+body header {
+  width: 400px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, aqua, royalblue);
+  transition: 1s;
+}
+body header h1 {
+  font: bold 50px/1 "orbitron";
+  color: #fff;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-150%);
+}
+body header h1::before {
+  content: "UI/UX development";
+  display: block;
+  font: 14px/1 "orbitron";
+  color: #fff;
+  letter-spacing: 1px;
+}
+body header h1::after {
+  content: "";
+  display: block;
+  width: 150px;
+  height: 2px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+body header ul {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+}
+body header ul li {
+  float: left;
+  margin-right: 5px;
+}
+body header ul li a {
+  font-size: 20px;
+  color: #fff;
+}
+body header ul li a span {
+  opacity: 0.7;
+  font-size: 15px;
+}
+body main {
+  margin-left: 400px;
+  padding: 20px;
+}
+body main ul {
+  float: right;
+  margin-bottom: 10px;
+}
+body main ul li {
+  float: left;
+  width: 100px;
+  height: 26px;
+  margin-left: 20px;
+}
+body main ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font: bold 7px/26px "orbitron";
+  color: #aaa;
+  letter-spacing: 1px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+body main ul li.on a {
+  background: linear-gradient(45deg, aqua, royalblue);
+  color: #fff;
+}
+body main section {
+  width: 100%;
+  float: left;
+}
+body main section article {
+  width: 20%;
+  padding: 12px;
+  float: left;
+}
+body main section article div {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 14px;
+  border-radius: 4px;
+}
+body main section article div img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+body main section article div h2 {
+  font: bold 11px/1 "arial";
+  color: #444;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+body main section article div p {
+  font: 10px/1.2 "arial";
+  color: #777;
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=style.css.map */
