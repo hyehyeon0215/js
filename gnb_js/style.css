@@ -1,0 +1,322 @@
+@charset "utf-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* popup */
+.popup {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	min-height: 200px;
+	background-color: #f8f8f8;
+	border: 2px solid #000;
+	border-radius: 5px;
+	padding: 20px;
+	z-index: 10;
+	/* box-shadow: ; */
+}
+
+.popup h1 {
+	font: bold 27px/1 'arial';
+	text-align: center;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.popup p {
+	font: normal 18px/1.5 'arial';
+	color: #333;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.popup button {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	border: none;
+	outline: none;
+	/* border none설명 후에 */
+	background-color: #333;
+	padding: 5px 10px;
+	color: #eee;
+}
+
+/* header */
+header {
+	width: 100%;
+}
+
+header .inner {
+	width: 1200px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #fff;
+	position: relative;
+}
+
+header .inner h1 {
+	position: absolute;
+	top: 50%;
+	left: 50px;
+	transform: translateY(-50%);
+}
+
+#gnb {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 30px;
+	background-color: #fff;
+	z-index: 10;
+	/* 여기 추가~~~ */
+}
+
+#gnb > li {
+	float: left;
+	position: relative;
+	line-height: 60px;
+	text-align: center;
+}
+
+#gnb > li > a {
+	display: block;
+	width: 150px;
+	height: 60px;
+	font: bold 25px/60px 'arial';
+	color: #333;
+}
+
+#gnb > li > a:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+#gnb > li > a.on {
+	background-color: #333;
+	color: #fff;
+}
+
+.sub {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	display: none;
+
+	/* 바닐라 자바스크립트에서 추가 */
+	
+	overflow: hidden;
+	/* 필수 */
+	transition: height 1s ease;
+}
+
+.sub > li > a {
+	display: block;
+	width: 150px;
+	/* 100%로하면 글자크기만큼만의 영역을 가집니다
+    px로 주세요 */
+	height: 50px;
+	font-size: 16px;
+	background-color: #555;
+	text-align: center;
+	color: #888;
+}
+
+.sub > li > a:hover {
+	color: #333;
+	background-color: #f8f8f8;
+}
+
+/* slider */
+
+#slide {
+	width: 1200px;
+	height: 300px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#slide .frame {
+	height: 900px;
+	position: relative;
+}
+
+/* contentBox */
+#contentBox {
+	width: 100%;
+}
+
+#contentBox .inner {
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.NGboard {
+	flex: 1.5;
+	height: 200px;
+	overflow: hidden;
+}
+.NGboard .tab {
+	width: 100%;
+	height: 50px;
+	/* background-color: #333; */
+	display: flex;
+}
+.NGboard .tab li {
+	width: 100px;
+	background-color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.NGboard .tab li a {
+	font: bold 15px/1 'arial';
+	color: #fff;
+}
+.NGboard .tab li.on {
+	background-color: #fff;
+}
+.NGboard .tab li.on a {
+	color: #333;
+}
+.content {
+	width: 100%;
+	height: 150px;
+	/* background-color: #eee; */
+	position: relative;
+}
+.content div {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	opacity: 0;
+	z-index: 1;
+	/* background-color: #eee; */
+}
+.content div.on {
+	opacity: 1;
+	z-index: 2;
+}
+#notice {
+	justify-content: flex-start;
+	/* padding: 20px; */
+}
+#notice ul {
+	width: 100%;
+}
+#notice ul li {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 30px;
+	cursor: pointer;
+	/* background-color: #eee; */
+}
+#notice ul li a {
+	font: 13px/30px '맑은 고딕';
+	color: #333;
+	margin-left: 10px;
+}
+#notice ul li span {
+	font: 10px/30px 'arial';
+	margin-right: 10px;
+}
+#notice ul li:hover {
+	/* border-bottom: 1px solid #555; */
+	background-color: #eee;
+}
+.banner {
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.banner img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.baro {
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 5px;
+}
+
+.baro a {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}
+/* .baro div img {
+	display: block;
+} */
+.baro a span {
+	font-size: 10px;
+	text-align: center;
+}
+
+footer {
+	width: 100%;
+}
+footer .inner {
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+/* 혹시 시간이없으면 이것까지만이라도 하세요 */
+
+footer .inner .logo {
+	background-color: #eee;
+	display: flex;
+	justify-content: center;
+	flex: 1.5;
+}
+footer .inner .copyright {
+	flex: 3;
+	text-align: center;
+}
+footer .inner .copyright span {
+	font: bold 12px/1 'arial';
+	color: #333;
+}
+footer .inner .sns {
+	flex: 1;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: #eee;
+}
