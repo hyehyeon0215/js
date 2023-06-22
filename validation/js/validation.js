@@ -22,6 +22,10 @@ btnSubmit.addEventListener("click", (e) => {
 
     if (!isCheck("gender")) e.preventDefault();
     if (!isCheck("interest")) e.preventDefault();
+    if (!isSelect("education")) e.preventDefault();
+    // if (!isPwd("pwd1", "pwd2", 5)) e.preventDefault();
+    if (!isPwd2("pwd1", "pwd2", 5)) e.preventDefault();
+
 })
 
 
@@ -107,6 +111,194 @@ function isCheck(el) {
     }
 }
 
+
+function isSelect(el) {
+    let sel = form.querySelector(`[name=${el}]`);
+    let sel_index = sel.options.selectedIndex;
+    // select 요소에 접근해서 자식 요소인 option들 중에 선택이 되어진 index를 찾아서 해당 인덱스 값을 변수로 담아줌
+    let val = sel[sel_index].value;
+
+    if (val !== "") {
+        const isErrMsg = sel.closest("td").querySelectorAll("p");
+        if (isErrMsg.length > 0) sel.closest("td").querySelector("p").remove();
+        return true;
+    } else {
+        const isErrMsg = sel.closest("td").querySelectorAll("p");
+        if (isErrMsg.length > 0) return false;
+
+        const errMsg = document.createElement("p");
+        errMsg.append("항목을 선택해 주세요");
+        sel.closest("td").append(errMsg);
+        return false;
+    }
+}
+
+
+
+
+// 정규 표현식
+// - 특정한 문자열 즉 개발자가 원하는 문자를 집합으로 표현하기 위해서 사용하는 형식 언어
+
+
+function isPwd(el1, el2, len) {
+    let pwd1 = form.querySelector(`[name=${el1}]`);
+    let pwd2 = form.querySelector(`[name=${el2}]`);
+    let pwd1_val = pwd1.value;
+    let pwd2_val = pwd2.value;
+
+    // 숫자, 문자(영어), 특수문자 조건을 정규 표현식으로 변수 저장
+    const num = /[0-9]/;
+    const eng = /[a-zA-Z]/;
+    const spc = /[~!@#$%^&*()_+?><]/;
+
+    //  1. 두 개의 비밀번호가 같아야 함 2. 비밀 번호의 글자 수가 len개 이상 3. 비밀번호에 num이 포함 4. 비밀번호에 eng, spc가 포함
+    if ((pwd1_val === pwd2_val) && (pwd1_val.length >= len) && (num.test(pwd1_val)) && (eng.test(pwd1_val)) && (spc.test(pwd1_val))) {
+        const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+        const isErrMsg2 = pwd2.closest("td").querySelectorAll("p");
+        if (isErrMsg.length > 0) pwd1.closest("td").querySelector("p").remove();
+        if (isErrMsg2.length > 0) pwd2.closest("td").querySelector("p").remove();
+        return true;
+    } else {
+        const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+        if (isErrMsg.length > 0) return false;
+        const errMsg = document.createElement("p");
+        errMsg.append("비밀번호를 다시 입력해 주세요");
+        pwd1.closest("td").append(errMsg);
+
+        const isErrMsg2 = pwd2.closest("td").querySelectorAll("p");
+        if (isErrMsg2.length > 0) return false;
+
+        const errMsg2 = document.createElement("p");
+        errMsg2.append("비밀번호를 다시 입력해 주세요");
+        pwd2.closest("td").append(errMsg2);
+        return false;
+    }
+}
+
+
+
+function isPwd2(el1, el2, len) {
+    let pwd1 = form.querySelector(`[name=${el1}]`);
+    let pwd2 = form.querySelector(`[name=${el2}]`);
+    let pwd1_val = pwd1.value;
+    let pwd2_val = pwd2.value;
+
+    // 숫자, 문자(영어), 특수문자 조건을 정규 표현식으로 변수 저장
+    const num = /[0-9]/;
+    const eng = /[a-zA-Z]/;
+    const spc = /[~!@#$%^&*()_+?><]/;
+    const errMsgWrap = pwd.closest("td");
+
+    function removeErrMsg() {
+        const errMsg = errMsgWrap.querySelector("p");
+        if (errMsg) errMsg.remove();
+    }
+
+    function addErrMsg(msg) {
+        const errMsg = document.createElement("p");
+        errMsg.textContent = msg;
+        errMsgWrap.append(errMsg);
+    }
+
+
+    if ((pwd1_val === pwd2_val) && (pwd1_val.length >= len) && (num.test(pwd1_val)) && (eng.test(pwd1_val)) && (spc.test(pwd1_val))) {
+        removeErrMsg();
+        return true;
+    } else {
+        removeErrMsg();
+        let err = "비밀번호는 ";
+        if (pwd1_val.length < len) {
+            err += `${len} 글자 이상 `;
+        }
+        if (!num.test(pwd1_val)) {
+            err += "숫자를 포함 ";
+        }
+        if (!eng.test(pwd1_val)) {
+            err += "영문을 포함 ";
+        }
+        if (!spc.test(pwd1_val)) {
+            err += "특수문자를 포함 ";
+        }
+        err += "동일하게 입력하세요";
+        addErrMsg(err);
+        return false;
+    }
+
+    // if (pwd1_val === pwd2_val) {
+    //     removeErrMsg();
+    //     if (pwd1_val.length >= len) {
+    //         removeErrMsg();
+    //         if (num.test(pwd1_val) && eng.test(pwd1_val) && spc.test(pwd1_val)) {
+    //             removeErrMsg();
+    //             return true;
+    //         }
+    //         else {
+    //             removeErrMsg();
+    //             addErrMsg("비밀번호는 숫자, 영문, 특수문자를 포함해야 합니다.");
+    //             return false;
+    //         }
+    //     }
+    //     else {
+    //         removeErrMsg();
+    //         addErrMsg(`비밀번호는 ${len}글자 이상이어야 합니다.`);
+    //         return false;
+    //     }
+    // }
+    // else {
+    //     removeErrMsg();
+    //     addErrMsg("비밀번호가 같지 않습니다.");
+    //     return false;
+    // }
+
+    // if (pwd1_val === pwd2_val) {
+    // const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+    // const isErrMsg2 = pwd2.closest("td").querySelectorAll("p");
+    // if (isErrMsg.length > 0) pwd1.closest("td").querySelector("p").remove();
+    // if (isErrMsg2.length > 0) pwd2.closest("td").querySelector("p").remove();
+
+    //     if (pwd1_val.length >= len) {
+    //         const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+    //         const isErrMsg2 = pwd2.closest("td").querySelectorAll("p");
+    //         if (isErrMsg.length > 0) pwd1.closest("td").querySelector("p").remove();
+    //         if (isErrMsg2.length > 0) pwd2.closest("td").querySelector("p").remove();
+
+    //         if ((num.test(pwd1_val)) && (eng.test(pwd1_val)) && (spc.test(pwd1_val))) {
+    //             const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+    //             const isErrMsg2 = pwd2.closest("td").querySelectorAll("p");
+    //             if (isErrMsg.length > 0) pwd1.closest("td").querySelector("p").remove();
+    //             if (isErrMsg2.length > 0) pwd2.closest("td").querySelector("p").remove();
+    //             return true;
+    //         }
+    //         else {
+    //             const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+    //             if (isErrMsg.length > 0) return false;
+    //             const errMsg = document.createElement("p");
+    //             errMsg.append("비밀번호는 숫자, 영문, 특수문자를 포함해야 합니다");
+    //             pwd1.closest("td").append(errMsg);
+    //             return false;
+    //         }
+    //     }
+    //     else {
+    //         const isErrMsg = pwd1.closest("td").querySelectorAll("p");
+    //         if (isErrMsg.length > 0) return false;
+    //         const errMsg = document.createElement("p");
+    //         errMsg.append("비밀번호는 5글자 이상이어야 합니다");
+    //         pwd1.closest("td").append(errMsg);
+    //         return false;
+    //     }
+    // }
+    // else {
+    //     const isErrMsg = pwd2.closest("td").querySelectorAll("p");
+    //     if (isErrMsg.length > 0) return false;
+    //     const errMsg = document.createElement("p");
+    //     errMsg.append("비밀번호가 같지 않습니다");
+    //     pwd2.closest("td").append(errMsg);
+    //     return false;
+    // }
+
+
+
+}
 
 
 toggleBtn.addEventListener("click", () => {
